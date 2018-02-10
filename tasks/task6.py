@@ -1,8 +1,4 @@
-# LONG LONG TIME AGO
-# IN THE DISTENT UNIVERSE
-# Tic-Tac-Toy by Directory Alexei Matusevski and some other guy:
 import os
-import winsound
 from random import randrange
 
 
@@ -21,29 +17,17 @@ with_ai = False  # 0 players, 1 with AI
 def clear(): pass
 #def clear(): return os.system('cls')
 
-
 def game(size):
-    # make a breackfast
-    # read news paper
-    # drink coffe
-    # call Lucas to play the game
-    # make a shit ton of money
-    # possible values:
-    # '' empty
-    # 'x' for ex
-    # 'o' for o
     players_are_interested = True
     board = make_board(size[0], size[1])
     tos = 0
     while players_are_interested:
         print_score(score, tos)
         print_board(board)
-        drink_beer()
         mover = tos % 2
         while not make_move(board, mover):
             print('nope')
             continue
-        burp()
 
         winner = check_win(board)
         tos = tos + 1
@@ -61,17 +45,6 @@ def game(size):
             tos = 0
             continue
         clear()
-
-
-def drink_beer():
-    # check google for best reviews
-    pass  # out
-
-
-def burp():
-    frequency = 200  # Set Frequency To 2500 Hertz
-    duration = 750  # Set Duration To 1000 ms == 1 second
-    winsound.Beep(frequency, duration)
 
 
 def make_move(board, marker):
