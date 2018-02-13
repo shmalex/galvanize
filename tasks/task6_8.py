@@ -103,3 +103,8 @@ tuple2 = (10, 4, 6, 8, 2, 10000, 4)
 assert (mean(tuple2) - 1433.4) <= 0.1
 assert median(tuple2) == 6
 assert mode(tuple2) == 4
+
+tuple3 = [17]
+assert mean(tuple3) == 17
+assert median(tuple3) == 17
+assert mode(tuple3) == 17
