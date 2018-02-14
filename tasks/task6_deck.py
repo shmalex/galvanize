@@ -14,18 +14,40 @@ class CardException(Exception):
     pass
 
 
+class DeckEmptyException(Exception):
+    pass
+
+
 class Card():
+    __suites = {
+        'heart': '♥',
+        'spade': '♠',
+        'club': '♣',
+        'diamond': '♦'
+    }
+
+    __value = ['2', '3', '4', '5', '6', '7', '8',
+               '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+
     def __init__(self, suite, value):
         self.__suite = suite
         self.__value = value
 
     def __eq__(self, card):
-        if not (type(card) is Card):
-            raise CardException('Only card instances are allowed')
-        return self.__suite == card.__suite and self.__value == card.__value
+        if (type(card) is Card):
+           # raise CardException('Only card instances are allowed')
+            return self.__suite == card.__suite and self.__value == card.__value
+        if (type(card) is str):
+            if (card in Card.__value):
+                return self.__value == card
+            return self.__suite == card
+
+    def __repr__(self):
+        return f"Card('{self.value}', '{self.suite}')"
 
     def __str__(self):
-        return f'{self.value} of {self.suite}'
+        h = Card.__suites[self.__suite]
+        return f'{self.value}{h}'
 
     @property
     def suite(self):
@@ -56,13 +78,19 @@ class Deck():
     def __next__(self):
         if self.current >= len(self.__cards):
             raise StopIteration()
-        else:
-            ret = self.__cards[self.current]
-            self.current += 1
-            return ret
+
+        ret = self.__cards[self.current]
+        self.current += 1
+        return ret
 
     def __len__(self):
         return len(self.__cards)
+
+    def __delitem__(self, card_or_index):
+        raise NotImplementedError()
+
+    def is_empty(self):
+        return len(self.__cards) == 0
 
     def shuffle(self):
         new_deck = []
@@ -79,6 +107,11 @@ class Deck():
         card = self.__cards[x]
         self.__cards.remove(card)
         return card
+
+    def pick_from_top(self):
+        if (len(self.__cards) == 0):
+            raise DeckEmptyException()
+        return self.__cards.pop()
 
 
 def main():
@@ -97,4 +130,5 @@ def main():
     print(len(dec))
 
 
-main()
+if __name__ == '__main__':
+    main()
