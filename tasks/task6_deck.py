@@ -19,15 +19,15 @@ class DeckEmptyException(Exception):
 
 
 class Card():
-    __suites = {
+    SUITS = {
         'heart': '♥',
         'spade': '♠',
         'club': '♣',
         'diamond': '♦'
     }
 
-    __value = ['2', '3', '4', '5', '6', '7', '8',
-               '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+    RANKS = ['2', '3', '4', '5', '6', '7', '8',
+             '9', '10', 'Jack', 'Queen', 'King', 'Ace']
 
     def __init__(self, suite, value):
         self.__suite = suite
@@ -35,10 +35,10 @@ class Card():
 
     def __eq__(self, card):
         if (type(card) is Card):
-           # raise CardException('Only card instances are allowed')
             return self.__suite == card.__suite and self.__value == card.__value
+
         if (type(card) is str):
-            if (card in Card.__value):
+            if (card in Card.RANKS):
                 return self.__value == card
             return self.__suite == card
 
@@ -46,7 +46,7 @@ class Card():
         return f"Card('{self.value}', '{self.suite}')"
 
     def __str__(self):
-        h = Card.__suites[self.__suite]
+        h = Card.SUITS[self.__suite]
         return f'{self.value}{h}'
 
     @property
@@ -59,15 +59,10 @@ class Card():
 
 
 class Deck():
-    _suites = ['heart', 'spade', 'club', 'diamond']
-    _value = ['2', '3', '4', '5', '6', '7', '8',
-              '9', '10', 'Jack', 'Queen', 'King', 'Ace']
-
     def __init__(self):
-        self.__cards = []
-        for v in Deck._value:
-            for s in Deck._suites:
-                self.__cards.append(Card(s, v))
+        self.__cards = [Card(suite, value)
+                        for value in Card.RANKS
+                        for suite in Card.SUITS]
 
     def __iter__(self):
         if len(self.__cards) == 0:

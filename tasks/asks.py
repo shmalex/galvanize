@@ -2,7 +2,7 @@
 def ask_yes_no(msg="y/n", repeat_value='Could you please reapeat?'):
     repeat = ''
     while True:
-        x = input(repeat + msg).lower()
+        x = input(repeat + msg + ':').lower()
         if x == 'y':
             return True
         elif x == 'n':
@@ -12,7 +12,7 @@ def ask_yes_no(msg="y/n", repeat_value='Could you please reapeat?'):
 
 def ask_number(msg="Enter numebr"):
     while True:
-        x = input(msg).strip()
+        x = input(msg + ':').strip()
         try:
             x = int(x)
             return x
@@ -20,8 +20,8 @@ def ask_number(msg="Enter numebr"):
             print("Please try again because we " + str(err))
 
 
-def ask_one_othe(options, pre_msg=' Choose one of the :' ):
-    ask = ', '.join(options)
+def ask_one_othe(options, pre_msg=' Choose one of the :'):
+    ask = ', '.join(options) + ':'
     while True:
         inp = input(pre_msg + ask).strip()
         if inp in options:

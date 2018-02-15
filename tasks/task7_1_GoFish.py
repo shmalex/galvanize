@@ -12,8 +12,7 @@ When any player at any time has all four cards of one face value, it forms a boo
 When all sets of cards have been laid down in books, the game ends. The player with the most books wins
 
 If you run out of cards and there are still cards left, you get five free cards.
-
- """
+"""
 
 import task6_deck as d
 import asks as ask
