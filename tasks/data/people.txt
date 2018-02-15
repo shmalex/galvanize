@@ -1,0 +1,26 @@
+Given a file containing rows of text, create a dictionary with keys
+Given a file containing rows of text, create a dictionary with keys
+of single characters. The value is a list of all the line numbers which
+start with that letter. The first line should have line number 1.
+start with that letter. The first line should have line number 1.
+start with that letter. The first line should have line number 1.
+start with that letter. The first line should have line number 1.
+
+Characters which never are the first letter of a line do not need to be
+included in your dictionary.
+
+Parameters
+----------
+filename : {string} indicating path to file
+
+Returns
+-------
+{dict} : keys are {str} and values are {list}
+
+Example
+-------
+>>> result = make_char_dict('data/people.txt')
+>>> result['j']
+[2, 19, 20]
+>>> result['g']
+[3]
