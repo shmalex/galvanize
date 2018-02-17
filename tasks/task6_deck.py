@@ -8,6 +8,7 @@ Make a list of attributes and methods that your Card and Deck classes should hav
 """
 
 import random
+import numpy as np
 
 
 class CardException(Exception):
@@ -88,14 +89,7 @@ class Deck():
         return len(self.__cards) == 0
 
     def shuffle(self):
-        new_deck = []
-        while len(self.__cards) > 0:
-            size = len(self) - 1
-            x = random.randint(0, size)
-            card = self.__cards[x]
-            new_deck.append(card)
-            self.__cards.remove(card)
-        self.__cards = new_deck
+        np.random.shuffle(self.__cards)
 
     def pick_random(self):
         x = random.randint(0, len(self) - 1)

@@ -136,8 +136,6 @@ class GoFishGame():
 
         self.__deck = d.Deck()
         self.__deck.shuffle()
-        self.__deck.shuffle()
-        self.__deck.shuffle()
         for player in self.__players:
             for x in range(given_cards):
                 card = self.__deck.pick_from_top()
