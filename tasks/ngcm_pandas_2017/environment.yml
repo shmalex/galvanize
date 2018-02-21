@@ -1,0 +1,25 @@
+name: ngcm
+dependencies:
+- python=3.6
+- cython
+- dask
+- ipython
+- ipywidgets
+- jupyter
+- line_profiler
+- matplotlib
+- notebook
+- numba 
+- numexpr
+- numpy
+- pandas
+- pandas-datareader
+- pip
+- pprofile
+- pyzmq
+- scikit-learn
+- scipy
+- seaborn
+- snakeviz
+- sympy
+
